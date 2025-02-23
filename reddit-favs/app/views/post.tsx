@@ -81,24 +81,24 @@ export function Post({details}: PostProps) {
     }
 
     return (
-    <Box className="w-1, p-2 self-stretch">
-        <span className="flex align-left">r/{details.data.subreddit}</span>       
-        <Paper className="flex self-start p-3 m-2">
+    <Box>
+        <span>r/{details.data.subreddit}</span>       
+        <Paper>
             <a href={redditurl.concat(details.data.permalink)} target="_blank" rel="noopener noreferrer">
                 <Typography variant="h5">
                     {details.data.title}
                 </Typography>
             </a>
         </Paper>
-        <Stack direction="row" className="flex items-stretch m-2" spacing={1}>
-            <Paper className="flex self-start aspect-square max-w-12 p-0">
-                <ButtonBase className="m-0" onClick={toggleFavorite}>
+        <Stack direction="row" spacing={1}>
+            <Paper>
+                <ButtonBase onClick={toggleFavorite}>
                     <img src={favorited ? HeartFilled : HeartEmpty}/>
                 </ButtonBase>
             </Paper>
-            <Paper className='flex items-stretch flex-wrap justify-center max-h-32 self-start p-2'>
-                <span className="flex self-center">+{details.data.ups}</span>
-                <img className="flex self-center" src={Upvote} style={{width: '32px'}}/>
+            <Paper>
+                <span>+{details.data.ups}</span>
+                <img src={Upvote} style={{width: '32px'}}/>
             </Paper>
         </Stack>
     </Box>
