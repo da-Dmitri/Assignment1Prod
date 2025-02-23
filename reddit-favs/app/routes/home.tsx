@@ -1,5 +1,4 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 import { CustomTabLayout } from "../views/tablayout";
 import { TitleBar } from "../views/titlebar";
 
@@ -18,4 +17,3 @@ export default function Home() {
     </main>
   );
 }
-
