@@ -6,22 +6,10 @@ import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import { HotList } from './postlist';
 import type { RedditPost } from './postlist';
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    ...theme.applyStyles('dark', {
-        backgroundColor: '#1A2027',
-    }),
-}));
 
 export type RedditListing = {
     data: {
@@ -67,7 +55,7 @@ export function Search() {
                         sx={{ maxWidth: '30%', width: '100%' }}
                         id="search-field"
                         freeSolo
-                        options={["btd6","phoenixsc"]}
+                        options={["btd6","phoenixsc","tf2"]}
                         onInputChange={(event, value) => {setCurrentSub(value);}}
                         renderInput={
                             (params) => <TextField

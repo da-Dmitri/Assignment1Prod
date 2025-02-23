@@ -5,7 +5,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
 
 import { Post, APIPost } from './post';
 import { Search } from './tabhot';
@@ -30,17 +29,6 @@ export type ColdlistProps = {
     posts: string[];
 }
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    ...theme.applyStyles('dark', {
-      backgroundColor: '#1A2027',
-    }),
-}));
-
 export function HotList({ posts }: HotlistProps) {
     return (
         <Box sx={{ width: '100%', bgcolor: 'none'}}>
@@ -48,9 +36,9 @@ export function HotList({ posts }: HotlistProps) {
                 {posts.map((post) => {
                     return (
                         <ListItem key={post.data.id}>
-                            <Item>
+                            <Paper>
                                 <Post details={post}/>
-                            </Item>
+                            </Paper>
                         </ListItem>
                     );
                 })}
@@ -66,9 +54,9 @@ export function ColdList({ posts }: ColdlistProps) {
                 {posts.map((id) => {
                     return (
                         <ListItem key={id}>
-                            <Item>
+                            <Paper>
                                 <APIPost id={id}/>
-                            </Item>
+                            </Paper>
                         </ListItem>
                     );
                 })}

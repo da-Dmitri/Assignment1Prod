@@ -7,9 +7,6 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 
 export function TitleBar() {
-
-
-
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">

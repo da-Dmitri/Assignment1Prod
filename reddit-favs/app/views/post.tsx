@@ -12,7 +12,6 @@ const HeartEmpty = 'public/HeartEmpty.png';
 const HeartFilled = 'public/HeartFilled.png';
 const Upvote = 'public/Upvote.png';
 
-import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
 
 import type { RedditPost } from './postlist';
@@ -23,33 +22,6 @@ export type PostProps = {
 export type APIPostProps = {
     id: string,
 }
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    ...theme.applyStyles('dark', {
-        backgroundColor: '#1A2027',
-    }),
-}));
-
-const ItemNoPadding = styled(Item)(({ theme }) => ({
-    padding: 0,
-}));
-
-const Clickable = styled(Button)(({ theme }) => ({
-    backgroundColor: '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    ...theme.applyStyles('dark', {
-        backgroundColor: '#1A2027',
-    minWidth: '0px'
-    }),
-}));
 
 //
 // For building a post entry straight from the API
@@ -109,30 +81,25 @@ export function Post({details}: PostProps) {
     }
 
     return (
-    <Box sx={{ width: '100%' }}>
+    <Box className="w-1, p-2 self-stretch">
         <span className="flex align-left">r/{details.data.subreddit}</span>       
-        <Stack direction="row" className="flex items-stretch" spacing={1}>
-            <ItemNoPadding className="flex self-start aspect-square max-w-12 p-0">
+        <Paper className="flex self-start p-3 m-2">
+            <a href={redditurl.concat(details.data.permalink)} target="_blank" rel="noopener noreferrer">
+                <Typography variant="h5">
+                    {details.data.title}
+                </Typography>
+            </a>
+        </Paper>
+        <Stack direction="row" className="flex items-stretch m-2" spacing={1}>
+            <Paper className="flex self-start aspect-square max-w-12 p-0">
                 <ButtonBase className="m-0" onClick={toggleFavorite}>
                     <img src={favorited ? HeartFilled : HeartEmpty}/>
                 </ButtonBase>
-            </ItemNoPadding>
-            <Item className='flex items-stretch flex-wrap justify-center max-h-32 self-start'>
+            </Paper>
+            <Paper className='flex items-stretch flex-wrap justify-center max-h-32 self-start p-2'>
                 <span className="flex self-center">+{details.data.ups}</span>
                 <img className="flex self-center" src={Upvote} style={{width: '32px'}}/>
-            </Item>
-            <Item className="flex self-start">
-                {/* <ButtonBase onClick={() => {goExtern(redditurl.concat(details.data.permalink))}}>
-                        <Typography variant="h5">
-                            {details.data.title}
-                        </Typography>
-                </ButtonBase> */}
-                <a href={redditurl.concat(details.data.permalink)} target="_blank" rel="noopener noreferrer">
-                    <Typography variant="h5">
-                        {details.data.title}
-                    </Typography>
-                </a>
-            </Item>
+            </Paper>
         </Stack>
     </Box>
     );
